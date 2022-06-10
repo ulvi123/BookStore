@@ -1,0 +1,16 @@
+    <%- include("partials/header") %>
+		
+		<div class="container">
+			<div class="row mt-3">
+				<% comics.forEach((comic)=>{ %>
+				<div class="card mx-2 mt-3">
+					<h3 class="card-title mt-3"><%= comic.title %></h3>
+					<a href="/comics/<%=comic._id%>">
+					   <img class="card-img card-image-top" src="<%= comic.image %>" alt= "Picture of the comic">
+					</a>
+					<p class="card-text mb-3 x-3"> <%= comic.description %></p>
+				</div>
+			    <% }) %>	
+			</div>
+		</div>
+    <%-include("partials/footer") %>

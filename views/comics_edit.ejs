@@ -1,0 +1,65 @@
+<%- include("partials/header") %>
+
+<div class="container">
+	<h1>
+		Edit Book Info
+	</h1>
+	<form action="/comics/<%= comic._id %>?_method=PUT" method="POST">
+		  <div class="mb-3">
+			<label for="exampleInputEmail1" class="form-label">Title</label>
+			<input type="text" class="form-control" name="title" placeholder="title" value="<%=comic.title%>">
+		  </div>
+		  <div class="mb-3">
+			<label for="exampleInputEmail1" class="form-label">Description</label>
+			<input type="text" class="form-control" name="description"value="<%=comic.description%>">
+		  </div>
+		 
+		 <div class="form-group">
+			<label for="author" class="form-label">Author</label>
+			<input type="text" class="form-control" name="author" value="<%=comic.author%>">
+		  </div>
+		 <div class="form-group">
+			<label for="publisher" class="form-label">Publisher</label>
+			<input type="text" class="form-control" name="publisher" value="<%=comic.publisher%>">
+		 </div>
+		 <div class="form-group">
+			<label for="date" class="form-label">Date</label>
+			<input type="date" class="form-control" name="date" value="<%= comic.date.toISOString().split("T")[0]%>">
+		 </div>
+		 <div class="form-group">
+			<label for="series" class="form-label">Series</label>
+			<input type="text" class="form-control" name="series" value="<%=comic.series%>">
+		 </div>
+		
+		 <div class="form-group">
+			<label for="issue" class="form-label">Issue</label>
+			<input type="number" class="form-control" name="issue" value="<%=comic.issue%>">
+		 </div>
+		
+		 <div class="form-group">
+			<label for="genre">Genre</label>
+			<select class="form-control" id="genre" name="genre">
+				<option disabled>--Choose below--</option>
+				<option <%= comic.genre === "Manga" ? "selected" : " " %>>Manga</option>
+				<option <%= comic.genre === "Superhero" ? "selected" : " " %>>Superhero</option>
+				<option <%= comic.genre === "Humor " ? "selected" : " " %>>Humor</option>
+                <option <%= comic.genre === "Sci-fi" ? "selected" : " " %>>Sci-fi</option>
+			 </select>
+		 </div>
+		
+		<div class="form-group form-check">
+			<input type="checkbox" class="form-check-input" name="color" <%= comic.genre? "checked": "" %> >
+			<label for="color" class="form-label">Color</label>
+		 </div>
+		
+		 <div class="form-group">
+			<label for="image" class="form-label">Link to image</label>
+			<input type="text" class="form-control" name="image" value="<%=comic.image%>">
+		 </div>
+		
+		  <button type="submit" class="btn btn-primary btn-dark">Edit</button>
+	</form>
+</div>
+
+
+<%- include("partials/footer") %>
